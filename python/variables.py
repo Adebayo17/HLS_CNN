@@ -1,0 +1,36 @@
+import os
+import struct
+import numpy as np
+from PIL import Image
+
+# Convolution
+KERNEL_SIZE = 3
+
+NC_CONV1 = 3
+NK_CONV1 = 64
+IMG_SIZE_CONV1 = 24
+
+NC_CONV2 = 64
+NK_CONV2 = 32
+IMG_SIZE_CONV2 = 12
+
+NC_CONV3 = 32
+NK_CONV3 = 20
+IMG_SIZE_CONV3 = 6
+
+# Maxpool
+
+STRIDE = 2
+
+NC_MAXPOOL1 = 64
+IMG_SIZE_MAXPOOL1_in = 24
+IMG_SIZE_MAXPOOL1_out = 12
+
+NC_MAXPOOL2 = 32
+IMG_SIZE_MAXPOOL2_in = 12
+IMG_SIZE_MAXPOOL2_out = 6
+
+NC_MAXPOOL3 = 20
+IMG_SIZE_MAXPOOL3_in = 6
+IMG_SIZE_MAXPOOL3_out = 3
+

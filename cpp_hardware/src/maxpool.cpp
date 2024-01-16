@@ -1,0 +1,24 @@
+#include "../include/maxpool.hpp"
+
+#pragma hls_design inline
+
+void MAXPOOL_1_HARDWARE (
+	d_type data_in[NC_MAXPOOL1*IMG_SIZE_MAXPOOL1_in*IMG_SIZE_MAXPOOL1_in],
+    d_type data_out[NC_MAXPOOL1*IMG_SIZE_MAXPOOL1_out*IMG_SIZE_MAXPOOL1_out]
+) {
+    MAXPOOL_MACRO(data_in, data_out, NC_MAXPOOL1, IMG_SIZE_MAXPOOL1_in, IMG_SIZE_MAXPOOL1_out, KERNEL_SIZE, STRIDE);
+}
+
+void MAXPOOL_2_HARDWARE (
+	d_type data_in[NC_MAXPOOL2*IMG_SIZE_MAXPOOL2_in*IMG_SIZE_MAXPOOL2_in],
+    d_type data_out[NC_MAXPOOL2*IMG_SIZE_MAXPOOL2_out*IMG_SIZE_MAXPOOL2_out]
+) {
+    MAXPOOL_MACRO(data_in, data_out, NC_MAXPOOL2, IMG_SIZE_MAXPOOL2_in, IMG_SIZE_MAXPOOL2_out, KERNEL_SIZE, STRIDE);
+}
+
+void MAXPOOL_3_HARDWARE (
+	d_type data_in[NC_MAXPOOL3*IMG_SIZE_MAXPOOL3_in*IMG_SIZE_MAXPOOL3_in],
+    d_type data_out[NC_MAXPOOL3*IMG_SIZE_MAXPOOL3_out*IMG_SIZE_MAXPOOL3_out]
+) {
+    MAXPOOL_MACRO(data_in, data_out, NC_MAXPOOL3, IMG_SIZE_MAXPOOL3_in, IMG_SIZE_MAXPOOL3_out, KERNEL_SIZE, STRIDE);
+}
