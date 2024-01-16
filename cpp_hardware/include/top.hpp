@@ -3,7 +3,12 @@
 
 #include "cnn.hpp"
 
-void TOP(
+#define SIZE_OUT 76800
+#define SIZE_OUT_0 320
+#define SIZE_OUT_1 240
+
+void DispProcTest(
+    img_type image_out[],
     l_type label_out[1]
 ) ;
 

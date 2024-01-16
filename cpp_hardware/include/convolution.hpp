@@ -11,6 +11,8 @@
     int colIndex = 0; \
     int indice_kernel = 0; \
     a_type conv_sum; \
+    a_type zero = 0; \
+    a_type temp; \
     for(int nk=0; nk < (NK); nk++) { \
         for(int i=0; i< (IMG_SIZE); i++) { \
             for(int j=0; j < (IMG_SIZE); j++) { \
@@ -23,9 +25,10 @@
                             indice_kernel = (KERNEL_SIZE)*(KERNEL_SIZE)*(nc + nk*(NC)) + (r+1)*KERNEL_SIZE + (c+1); \
                             indice_img = nc*(IMG_SIZE)*(IMG_SIZE) + rowIndex*(IMG_SIZE) + colIndex; \
                             if((rowIndex >=0 && rowIndex < (IMG_SIZE)) && (colIndex >=0 && colIndex < (IMG_SIZE))) { \
-                                conv_sum += coeffs[indice_kernel] * data_in[indice_img];; \
+                                temp = coeffs[indice_kernel] * data_in[indice_img]; \
+                                conv_sum = conv_sum + temp; \
                             } else { \
-                                conv_sum += 0.0; \
+                                conv_sum = conv_sum + zero; \
                             } \
                         } \
                     } \
@@ -64,8 +67,6 @@ void CONVOLUTION_3_HARDWARE (
     d_type biaises[NK_CONV3],
     d_type data_out[NK_CONV3*IMG_SIZE_CONV3*IMG_SIZE_CONV3]
 ) ;
-
-
 
 
 #endif
