@@ -59,7 +59,7 @@ def save_weights_to_text(Weights, output_dir='save/output_weights'):
             if len(weights_matrix.shape) == 4:  # Vérifier si la matrice est 4D
                 transposed_weights = weights_matrix
                 transposed_weights = np.transpose(transposed_weights, (0, 1, 3, 2))
-                print(transposed_weights.shape)
+                #print(transposed_weights.shape)
                 file.write("{")
                 for i in range(transposed_weights.shape[0]):
                     file.write("{")
@@ -83,7 +83,7 @@ def save_weights_to_text(Weights, output_dir='save/output_weights'):
                 file.write("}\n")
             elif len(weights_matrix.shape) == 2:  # Vérifier si la matrice est 2D
                 transposed_weights = weights_matrix
-                print(transposed_weights.shape)
+                #print(transposed_weights.shape)
                 file.write("{")
                 for i in range(transposed_weights.shape[0]):
                     file.write("{")
@@ -151,3 +151,24 @@ def save_to_hpp(data, num_images, filename):
         file.write('};\n')
 
 ################################################################################################################
+
+def rgb_to_gray_and_save(input_matrix, output_filename):
+    # Assurez-vous que la forme de la matrice d'entrée est correcte
+    if input_matrix.shape != (3, 24, 24):
+        raise ValueError("La forme de la matrice d'entrée doit être (3, 24, 24)")
+
+    # Transposez la matrice pour obtenir l'ordre correct des dimensions
+    matrix_rgb = np.transpose(input_matrix, (1, 2, 0))
+
+    # Convertir la matrice RGB en niveaux de gris
+    matrix_gray = np.dot(matrix_rgb[..., :3], [0.2989, 0.587, 0.114])
+
+    # Appliquer le reshape(-1) pour aplatir la matrice en un tableau 1D
+    flat_array = matrix_gray.reshape(-1)
+
+    # Sauvegarder le tableau dans un fichier texte
+    np.savetxt(output_filename, flat_array, fmt='%d')
+
+# Exemple d'utilisation de la fonction avec une matrice d'exemple et un nom de fichier de sortie
+#example_matrix = np.random.randint(0, 256, size=(3, 24, 24), dtype=np.uint8)
+#rgb_to_gray_and_save(example_matrix, 'output.txt')
