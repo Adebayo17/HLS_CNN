@@ -1,8 +1,8 @@
 #ifndef __TYPES__
 #define __TYPES__
 
-#include "ac_fixed.h"
-#include "ac_channel.h"
+#include "../ac_fixed/ac_fixed.h"
+#include "../ac_fixed/ac_channel.h"
 
 #define SIZE_IN 1728
 

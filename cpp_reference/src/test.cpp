@@ -5,11 +5,11 @@
 template <int N, int M, int P>
 void printArray(double array[N][M][P]) {
     std::cout << "{";
-    for (int i = 0; i < N; ++i) {
+    for (int i = 0; i < N; i++) {
         std::cout << "{";
-        for (int j = 0; j < M; ++j) {
+        for (int j = 0; j < M; j++) {
             std::cout << "{";
-            for (int k = 0; k < P; ++k) {
+            for (int k = 0; k < P; k++) {
                 std::cout << array[i][j][k];
                 if (k < P - 1) {
                     std::cout << ", ";
@@ -28,6 +28,27 @@ void printArray(double array[N][M][P]) {
     std::cout << "}\n";
 }
 
+// Fonction pour imprimer un tableau 2D 
+template <int N, int M>
+void printArray2D(double array[N][M]) {
+    std::cout << "{";
+    for (int i = 0; i < N; i++) {
+        std::cout << "{";
+        for (int j = 0; j < M; j++) {
+            std::cout << array[i][j];
+            if (j < M - 1) {
+                std::cout << ", ";
+            }
+        }
+        std::cout << "}\n\n";
+        if (i < N - 1) {
+            std::cout << ", ";
+        }
+    }
+    std::cout << "}\n";
+}
+
+
 // Fonction pour imprimer un tableau 1D 
 template <int N>
 void printArray(double array[N]) {
@@ -39,6 +60,8 @@ void printArray(double array[N]) {
     std::cout << "}\n";
 }
 
+
+/*
 void test_top_0();
 void test_top_0_label();
 void test_top_10();
@@ -173,4 +196,7 @@ void test_conv1_maxpool1(int choix) {
 
 }
 
+*/
+
 // g++ test.cpp top.cpp cnn.cpp convolution.cpp maxpool.cpp reshape.cpp perceptron.cpp -o test
+// g++ top.cpp cnn.cpp convolution.cpp maxpool.cpp reshape.cpp perceptron.cpp -o test

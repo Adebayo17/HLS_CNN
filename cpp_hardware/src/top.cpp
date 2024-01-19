@@ -1,52 +1,58 @@
 #include "../include/top.hpp"
+#include <iostream>
 
 #pragma hls_design top
 
 void DispProcTest(
     img_type image_out[SIZE_OUT]
+    //int labels[10]
 ) {
-    l_type label[1];
-    CNN_HARDWARE(image_norm_0, label);
-
-    int indice_overlay = (label[0].to_int())*OVERLAY_0*OVERLAY_1;
-    int indice_image = 0;
-
-    lx: for(int x=0; x<SIZE_OUT_0; x++) {
-        ly: for(int y=0; y<SIZE_OUT_1; y++) {
-            if(x<OVERLAY_0 && y<OVERLAY_1) {
-                image_out[x*SIZE_OUT_0 + y] = OVERLAYS_LIST[indice_overlay + x*OVERLAY_0 + y];
-            }
-            else {
-                image_out[x*SIZE_OUT_0 + y] = image_0[indice_image*original_image_size + indice_image];
-                indice_image++;
-            }
-        }
-    }
-}
-
-/*
-void DispProcTest(
-    img_type image_out[SIZE_OUT*10]
-) {
-    GET_IMAGE: for(int i=0; i<10; i++) {
+    for(int i=0; i<10; i++) {
         l_type label[1];
-        CNN_HARDWARE(image_norm_array[i], label);
+        d_type image_norm_i[SIZE_IN];
+        for(int select=0; select<SIZE_IN; select++) {
+            image_norm_i[select] = image_norm_array[i*SIZE_IN + select];
+        }
 
-        int indice_overlay = (label[0].to_int())*OVERLAY_0*OVERLAY_1;
-        int indice_image = 0;
+        CNN_HARDWARE(image_norm_i, label);
 
-        lx: for(int x=0; x<SIZE_OUT_0; x++) {
-            ly: for(int y=0; y<SIZE_OUT_1; y++) {
-                if(x<OVERLAY_0 && y<OVERLAY_1) {
-                    image_out[i*SIZE_OUT + x*SIZE_OUT_0 + y] = OVERLAYS_LIST[indice_overlay + x*OVERLAY_0 + y];
+        //labels[i] = labels[0];
+
+        int bits[4] = {0};
+
+        bits[3] = (label[0].to_int() >> 3) & 1; 
+        bits[2] = (label[0].to_int() >> 2) & 1;
+        bits[1] = (label[0].to_int() >> 1) & 1;
+        bits[0] = label[0].to_int() & 1;
+
+        for(int x=0; x<SIZE_OUT_0; x++) {
+            for(int y=0; y<SIZE_OUT_1; y++) {
+                if(y<60) {
+                    image_out[x + y*SIZE_OUT_0] = bits[3]*255;
+                }
+                else if(60<=y<120) {
+                    image_out[x + y*SIZE_OUT_0] = bits[2]*255;
+                }
+                else if(120<=y<180) {
+                    image_out[x + y*SIZE_OUT_0] = bits[1]*255;
                 }
                 else {
-                    image_out[i*SIZE_OUT + x*SIZE_OUT_0 + y] = image_array[i][indice_image*original_image_size + indice_image];
-                    indice_image++;
+                    image_out[x + y*SIZE_OUT_0] = bits[0]*255;
                 }
             }
         }
-        for(int wait=0; wait<100; wait++){}
+
+        std::cout << "Image "  << i << " processed. " << "Class detected = " << label[0] << " and the true class is = " << image_labels[i] << " >> " << (label[0]==image_labels[i]) << std::endl;     
+
+        DELAY: for(int wait=0; wait<100; wait++){
+            int delay = 10;
+            while (delay > 0 )
+            {
+                delay--;
+            }
+            
+        }
     }
 }
-*/
+
+

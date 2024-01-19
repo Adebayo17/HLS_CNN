@@ -42,5 +42,11 @@
 #define NC_RESHAPE 20
 #define IMG_SIZE_RESHAPE 3
 
+// Image_out 
+
+#define SIZE_OUT_0 320
+#define SIZE_OUT_1 240
+#define SIZE_OUT SIZE_OUT_0*SIZE_OUT_1
+
 
 #endif

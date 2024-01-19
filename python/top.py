@@ -6,7 +6,7 @@ from save import *
 
 true_detected = []
 false_detected = []
-n = 1
+n = 10
 
 def main():
     cnn_archi()
@@ -49,14 +49,14 @@ def main():
         
         max_index = np.argmax(img_percp[1])
 
-        print(f"label = {max_index}")
+        #print(f"label = {max_index}")
         
         if(max_index == img_percp[0]):
             true_detected.append(j)
         else:
             false_detected.append(j)
 
-    print("\n")
+    #print("\n")
     print(f'\nThe images detected correctly in range [0, {n-1}] are : \n {true_detected} ')
     print(f'Le taux de prédiction = {(len(true_detected) / n)*100}% pour {n} images\n ')
 

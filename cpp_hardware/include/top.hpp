@@ -14,12 +14,8 @@
 
 void DispProcTest(
     img_type image_out[SIZE_OUT]
+    //int labels[10]
 ) ;
 
-/*
-void DispProcTest(
-    img_type image_out[SIZE_OUT*10]
-) ;
-*/
 
 #endif

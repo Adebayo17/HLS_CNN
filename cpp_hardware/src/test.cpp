@@ -1,14 +1,13 @@
 #include <iostream>
 #include "../include/top.hpp"
-#include "mc_scverify.h"
+#include "../ac_fixed/mc_scverify.h"
 
 
 CCS_MAIN(int argc, char **argv) {
-
+    img_type image[SIZE_OUT];
     printf( "Start verification CNN_HARDWARE\n");
     l_type label[1];
-    CCS_DESIGN(CNN_HARDWARE)(image_norm_0, label);
-    std::cout << "Class detected = " << label[0].to_int() << std::endl;
+    CCS_DESIGN(DispProcTest)(image);
     printf( "End verification CNN_HARDWARE\n");
     CCS_RETURN(0);
 

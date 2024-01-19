@@ -1,4 +1,5 @@
 #include "../include/perceptron.hpp"
+#include <cmath>
 
 double my_exp(double x) {
     double result = 1.0;
@@ -51,5 +52,5 @@ void PERCEPTRON_HARDWARE(
         }
     }
 
-    //SOFTMAX: softmax(data_out);
+    SOFTMAX: softmax(data_out);
 }

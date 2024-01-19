@@ -59,5 +59,5 @@ def get_weights_and_biases(dir_path='cnn_coeff_3x3'):
             output_file = f"save/weights_biases/{layer_name}_{layer_type}.txt"
 
             # Appeler la fonction pour sauvegarder les poids dans le fichier .txt
-            save_weights_for_cpp(layer_matrix, output_file)
-    save_weights_to_text(Weights)
+            #save_weights_for_cpp(layer_matrix, output_file)
+    #save_weights_to_text(Weights)
