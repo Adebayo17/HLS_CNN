@@ -13,7 +13,7 @@
 #define original_image_size 32
 
 void DispProcTest(
-    img_type image_out[SIZE_OUT]
+    img_type img_out[SIZE_OUT]
     //int labels[10]
 ) ;
 

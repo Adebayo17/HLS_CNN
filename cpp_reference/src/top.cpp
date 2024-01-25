@@ -8,7 +8,7 @@ template <int Rows, int Cols>
 void convert1DTo2D(double array1D[], double array2D[Rows][Cols]);
 
 void DispProcTest(
-    double image_out[SIZE_OUT]
+    double img_out[SIZE_OUT]
 ) {
     for(int i=0; i<10; i++) {
         int label[1];
@@ -35,25 +35,25 @@ void DispProcTest(
         for(int x=0; x<SIZE_OUT_0; x++) {
             for(int y=0; y<SIZE_OUT_1; y++) {
                 if(y<60) {
-                    image_out[x + y*SIZE_OUT_0] = bits[3]*255;
+                    img_out[x + y*SIZE_OUT_0] = bits[3]*255;
                 }
                 else if(60<=y && y<120) {
-                    image_out[x + y*SIZE_OUT_0] = bits[2]*255;
+                    img_out[x + y*SIZE_OUT_0] = bits[2]*255;
                 }
                 else if(120<=y && y<180) {
-                    image_out[x + y*SIZE_OUT_0] = bits[1]*255;
+                    img_out[x + y*SIZE_OUT_0] = bits[1]*255;
                 }
                 else {
-                    image_out[x + y*SIZE_OUT_0] = bits[0]*255;
+                    img_out[x + y*SIZE_OUT_0] = bits[0]*255;
                 }
             }
         }
 
         std::cout << "Image "  << i << " processed. " << "Class detected = " << label[0] << " and the true class is = " << image_labels[i] << " >> " << (label[0]==image_labels[i]) << std::endl;     
-        double image_out_2D[SIZE_OUT_1][SIZE_OUT_0];
-        convert1DTo2D<SIZE_OUT_1, SIZE_OUT_0>(image_out,image_out_2D);
+        double img_out_2D[SIZE_OUT_1][SIZE_OUT_0];
+        convert1DTo2D<SIZE_OUT_1, SIZE_OUT_0>(img_out,img_out_2D);
 
-        printArray2D<SIZE_OUT_1, SIZE_OUT_0>(image_out_2D);
+        printArray2D<SIZE_OUT_1, SIZE_OUT_0>(img_out_2D);
         
         DELAY: for(int wait=0; wait<100; wait++){
             int delay = 10;

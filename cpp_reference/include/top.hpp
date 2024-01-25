@@ -5,7 +5,7 @@
 
 
 void DispProcTest(
-    double image_out[SIZE_OUT]
+    double img_out[SIZE_OUT]
 ) ;
 
 #endif

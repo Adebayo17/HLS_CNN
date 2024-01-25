@@ -4,7 +4,7 @@
 #pragma hls_design top
 
 void DispProcTest(
-    img_type image_out[SIZE_OUT]
+    img_type img_out[SIZE_OUT]
     //int labels[10]
 ) {
     for(int i=0; i<10; i++) {
@@ -28,16 +28,16 @@ void DispProcTest(
         for(int x=0; x<SIZE_OUT_0; x++) {
             for(int y=0; y<SIZE_OUT_1; y++) {
                 if(y<60) {
-                    image_out[x + y*SIZE_OUT_0] = bits[3]*255;
+                    img_out[x + y*SIZE_OUT_0] = bits[3]*255;
                 }
                 else if(60<=y<120) {
-                    image_out[x + y*SIZE_OUT_0] = bits[2]*255;
+                    img_out[x + y*SIZE_OUT_0] = bits[2]*255;
                 }
                 else if(120<=y<180) {
-                    image_out[x + y*SIZE_OUT_0] = bits[1]*255;
+                    img_out[x + y*SIZE_OUT_0] = bits[1]*255;
                 }
                 else {
-                    image_out[x + y*SIZE_OUT_0] = bits[0]*255;
+                    img_out[x + y*SIZE_OUT_0] = bits[0]*255;
                 }
             }
         }
