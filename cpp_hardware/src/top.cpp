@@ -5,7 +5,6 @@
 
 void DispProcTest(
     img_type img_out[SIZE_OUT]
-    //int labels[10]
 ) {
     for(int i=0; i<10; i++) {
         l_type label[1];
@@ -15,8 +14,6 @@ void DispProcTest(
         }
 
         CNN_HARDWARE(image_norm_i, label);
-
-        //labels[i] = labels[0];
 
         int bits[4] = {0};
 
@@ -42,7 +39,7 @@ void DispProcTest(
             }
         }
 
-        std::cout << "Image "  << i << " processed. " << "Class detected = " << label[0] << " and the true class is = " << image_labels[i] << " >> " << (label[0]==image_labels[i]) << std::endl;     
+        std::cout << "Image "  << i << " processed. " << "Class detected = " << label[0] << " and the true class is = " << image_norm_labels[i] << " >> " << (label[0]==image_norm_labels[i]) << std::endl;     
 
         DELAY: for(int wait=0; wait<100; wait++){
             int delay = 10;

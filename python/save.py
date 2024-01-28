@@ -169,6 +169,5 @@ def rgb_to_gray_and_save(input_matrix, output_filename):
     # Sauvegarder le tableau dans un fichier texte
     np.savetxt(output_filename, flat_array, fmt='%d')
 
-# Exemple d'utilisation de la fonction avec une matrice d'exemple et un nom de fichier de sortie
 #example_matrix = np.random.randint(0, 256, size=(3, 24, 24), dtype=np.uint8)
 #rgb_to_gray_and_save(example_matrix, 'output.txt')

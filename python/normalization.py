@@ -60,8 +60,6 @@ def normalize_image(image):
     mean = np.mean(image)
     std_dev = np.std(image)
     normalized_image = (image - mean) / np.maximum(std_dev, (1/np.sqrt(image.size)))
-    # Clamp values to be within [-1, 1]
-    normalized_image = np.clip(normalized_image, -1, 1)
     return normalized_image
 
 

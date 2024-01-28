@@ -5,8 +5,6 @@
 
 #include "coeffs.hpp"
 #include "biases.hpp"
-
-#include "images.hpp"
 #include "images_norm.hpp"
 
 #include "convolution.hpp"

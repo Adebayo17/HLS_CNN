@@ -19,7 +19,6 @@ class MaxpoolLayer:
                     window_start_j = min(j, input_shape[1] - self.window_size)
                     window_start_k = min(k, input_shape[2] - self.window_size)
                     window = tab_in[i, window_start_j:window_start_j + self.window_size, window_start_k:window_start_k + self.window_size]
-                    #print(window, "\n")
                     tab_out[i, j // self.pool_size, k // self.pool_size] = np.max(window)
 
         return label, tab_out 

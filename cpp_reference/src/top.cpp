@@ -49,11 +49,7 @@ void DispProcTest(
             }
         }
 
-        std::cout << "Image "  << i << " processed. " << "Class detected = " << label[0] << " and the true class is = " << image_labels[i] << " >> " << (label[0]==image_labels[i]) << std::endl;     
-        double img_out_2D[SIZE_OUT_1][SIZE_OUT_0];
-        convert1DTo2D<SIZE_OUT_1, SIZE_OUT_0>(img_out,img_out_2D);
-
-        printArray2D<SIZE_OUT_1, SIZE_OUT_0>(img_out_2D);
+        std::cout << "Image "  << i << " processed. " << "Class detected = " << label[0] << " and the true class is = " << image_norm_labels[i] << " >> " << (label[0]==image_norm_labels[i]) << std::endl;     
         
         DELAY: for(int wait=0; wait<100; wait++){
             int delay = 10;
@@ -64,18 +60,24 @@ void DispProcTest(
             
         }
 
-        std::cout << std::endl << std::endl;
     }
 }
 
 
 int main() {
+    printf( "Start verification CNN_HARDWARE\n\n");
+
     double image[SIZE_OUT];
     DispProcTest(image);
 
+    printf( "\nEnd verification CNN_HARDWARE\n");
 
+    return 0;
 }
 
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////// FUNCTION IMPLEMENTATIONS //////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 template <int N, int M>
 void printArray2D(double array[N][M]) {
